@@ -54,7 +54,7 @@ class LoginForm extends React.Component {
   render () {
     return (
       <div className="login_form">
-        <h1>Se connecter à Kevent</h1>
+        <h2>Se connecter à Kevent</h2>
         <LoginInput label={"Identifiant : "} isPassWord={false}/>
         <LoginInput label={"Mot de passe : "} isPassWord={true}/>
 
