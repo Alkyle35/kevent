@@ -132,7 +132,7 @@ class MainSignin extends React.Component {
 class MainForgetPassWord extends React.Component {
   render() {
     return (
-      <div>
+      <div className="main_forget_password">
         <Banner />
         <Footer />
       </div>
@@ -164,6 +164,7 @@ class Main extends React.Component {
   }
 
   handleForgetPassWordClick() {
+    alert("mot de passe ouvlié");
     this.setState({
       component: <MainForgetPassWord />,
       });
