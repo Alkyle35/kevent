@@ -1,50 +1,95 @@
+/* CSS RESET */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+	line-height: 1;
 }
-
 ol, ul {
-  padding-left: 30px;
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
+/* FIN RESET */
+
+body {
+  background-color: #E8E7ED;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  display:flex;
+  justify-content: center;
 }
 
-.status {
-  margin-bottom: 10px;
+.banner {
+  background-color: #444658;
+  width: 360px;
+  height: 76px;
+  display:flex;
+  justify-content:center;
+  
 }
 
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 34px;
+.banner_logo {
+  color: #FFFFFF;
+  font-size: 10px;
+  
 }
 
-.square:focus {
-  outline: none;
+h1 {
+  color: #fff;
+  align-items: center;
+
 }
 
-.kbd-navigation .square:focus {
-  background: #ddd;
+.login_form {
+  align-items: center;
+  align-content:space-between;
+  margin: 20%;
+  font-size: 10px;
 }
 
-.game {
-  display: flex;
-  flex-direction: row;
+.login_input {
+  margin: 5px 5px;
 }
 
-.game-info {
-  margin-left: 20px;
+.buttom {
+  margin: 5px 0;
+}
+
+.root {
+  margin: 20px;
 }
