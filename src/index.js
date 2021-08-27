@@ -6,8 +6,8 @@ class KEventButton extends React.Component {
   render () {
     let button = <button></button>;
         
-    if (this.props.type=="online") {
-      button = <a href="" onClick={() => this.props.onClick()}>{this.props.label}</a>;
+    if (this.props.type==="online") {
+      button = <a href="#" onClick={() => this.props.onClick()}>{this.props.label}</a>;
     } else {
       button=<button onClick={() => this.props.onClick()}>{this.props.label}</button>;
     }
@@ -122,7 +122,9 @@ class MainSignin extends React.Component {
     return (
       <div className="main_signin">
         <Banner />
-        <SigninForm onSigninValidateClick={() => this.props.onSigninValidateClick()} onAlreadyAccountClick={() => this.props.onAlreadyAccountClick} />
+        <SigninForm 
+          onSigninValidateClick={() => this.props.onSigninValidateClick()} 
+          onAlreadyAccountClick={() => this.props.onAlreadyAccountClick()} />
         <Footer />
       </div>
     );
@@ -145,39 +147,36 @@ class Main extends React.Component {
     super(props);
     this.state = {
       component: <MainLogin 
-        onLoginClick={() => this.handleLoginClick()} 
-        onSigninClick={() => this.handleSigninClick()} 
-        onForgetPassWordClick={() => this.handleForgetPassWordClick()} />,
+        onLoginClick={() => this.loadHome()} 
+        onSigninClick={() => this.loadSignin()} 
+        onForgetPassWordClick={() => this.loadForgetPassWord()} />,
     };
   }
 
-  handleLoginClick() {
-    alert("handle co logyuyuiin");
+  loadHome() {
+    alert("loading home..");
   }
 
-  handleSigninClick() {
+  loadSignin() {
     this.setState({
       component: <MainSignin 
-        onSigninValidateClick={() => this.handleSigninValidateClick()}
-        onAlreadyAccountClick={() => this.handleAlreadyAccountClick()} />,
+        onSigninValidateClick={() => this.loadLogin()}
+        onAlreadyAccountClick={() => this.loadLogin()} />,
       });
   }
 
-  handleForgetPassWordClick() {
-    alert("mot de passe ouvlié");
+  loadForgetPassWord() {
     this.setState({
       component: <MainForgetPassWord />,
       });
   }
 
-  handleSigninValidateClick() {
-    alert("inscription effectuée");
-  }
-
-  handleAlreadyAccountClick() {
+  loadLogin() {
     this.setState({
       component: <MainLogin 
-      onLoginClick={() => this.handleLoginClick()} onSigninClick={() => this.handleSigninClick()}  />,
+      onLoginClick={() => this.loadHome()} 
+      onSigninClick={() => this.loadSignin()}  
+      onForgetPassWordClick={() => this.loadForgetPassWord()}/>,
       });
   }
 
