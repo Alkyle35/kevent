@@ -2,6 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+class KEventButton extends React.Component {
+  render () {
+    return (
+      <div className={this.props.type=="online"? "kevent_button_online" : "kevent_button"} onClick={() => this.props.onClick()}>
+        <button>
+          {this.props.label}
+        </button>
+      </div>
+    );
+  }
+}
+
 class BannerLogo extends React.Component {
   render () {
     return (
@@ -23,6 +35,16 @@ class Banner extends React.Component {
   }
 }
 
+class Footer extends React.Component {
+  render() {
+    return (
+      <div className="footer">
+        <p>Site web réalisé en collaboration par Kévin Jordao et Volkan Guineri.</p>
+      </div>
+    );
+  }
+}
+
 class LoginForm extends React.Component {
   render () {
     return (
@@ -31,18 +53,12 @@ class LoginForm extends React.Component {
         <LoginInput label={"Identifiant : "} isPassWord={false}/>
         <LoginInput label={"Mot de passe : "} isPassWord={true}/>
 
-        <button className="login_button" 
-        onClick={() => this.props.onLoginClick()} >
-          Connexion
-        </button>
-        <div>
-          <a href="">mot de passe oublié?</a>
-        </div>
+        <KEventButton label="Connexion" onClick={() => this.props.onLoginClick()} />
+          
+        <KEventButton label="mot de passe oublié?" type="online"/>
+        
         <div>--- ou ---</div>
-        <button className="signin_button" 
-        onClick={() => this.props.onSigninClick()} >
-          Inscription
-        </button>
+        <KEventButton label="Inscription" onClick={() => this.props.onSigninClick()} />
       </div>
     );
   }
@@ -74,6 +90,22 @@ class MainLogin extends React.Component {
         <LoginForm 
         onLoginClick ={() => this.props.onLoginClick()} 
         onSigninClick={() => this.props.onSigninClick()}/>
+        <Footer />
+      </div>
+    );
+  }
+}
+
+class SigninForm extends React.Component {
+  render() {
+    return (
+      <div className="signin_form">
+        <LoginInput label={"Nom : "} isPassWord={false}/>
+        <LoginInput label={"Prénom : "} isPassWord={false}/>
+        <LoginInput label={"Pseudo : "} isPassWord={false}/>
+        <LoginInput label={"Email : "} isPassWord={false}/>
+        <LoginInput label={"Mot de passe : "} isPassWord={true}/>
+        <KEventButton label="S'inscrire" onClick={() => this.props.onSigninValidateClick()}/>
       </div>
     );
   }
@@ -83,7 +115,10 @@ class MainSignin extends React.Component {
   render () {
     return (
       <div className="main_signin">
-
+        <Banner />
+        <SigninForm onSigninValidateClick={() => this.props.onSigninValidateClick()}/>
+        
+        <Footer />
       </div>
     );
   }
@@ -98,11 +133,17 @@ class Main extends React.Component {
   }
 
   handleLoginClick() {
-    alert("handle co login");
+    alert("handle co logyuyuiin");
   }
 
   handleSigninClick() {
-    alert("handle creation compte");
+    this.setState({
+      component: <MainSignin onSigninValidateClick={() => this.handleSigninValidateClick()} />,
+      });
+  }
+
+  handleSigninValidateClick() {
+    alert("inscription effectuée");
   }
 
   render() {
