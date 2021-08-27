@@ -4,11 +4,16 @@ import './index.css';
 
 class KEventButton extends React.Component {
   render () {
+    let button = <button></button>;
+        
+    if (this.props.type=="online") {
+      button = <a href="" onClick={() => this.props.onClick()}>{this.props.label}</a>;
+    } else {
+      button=<button onClick={() => this.props.onClick()}>{this.props.label}</button>;
+    }
     return (
-      <div className={this.props.type=="online"? "kevent_button_online" : "kevent_button"} onClick={() => this.props.onClick()}>
-        <button>
-          {this.props.label}
-        </button>
+      <div className="kevent_button" >
+        {button}
       </div>
     );
   }
@@ -39,7 +44,7 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        <p>Site web réalisé en collaboration par Kévin Jordao et Volkan Guineri.</p>
+        <p>Site web réalisé en collaboration par Kévin Jordao et Volkan Guneri.</p>
       </div>
     );
   }
@@ -106,6 +111,7 @@ class SigninForm extends React.Component {
         <LoginInput label={"Email : "} isPassWord={false}/>
         <LoginInput label={"Mot de passe : "} isPassWord={true}/>
         <KEventButton label="S'inscrire" onClick={() => this.props.onSigninValidateClick()}/>
+        <KEventButton label="Vous avez déjà un compte?" type="online" onClick={() => this.props.onAlreadyAccountClick()}/>
       </div>
     );
   }
@@ -116,8 +122,7 @@ class MainSignin extends React.Component {
     return (
       <div className="main_signin">
         <Banner />
-        <SigninForm onSigninValidateClick={() => this.props.onSigninValidateClick()}/>
-        
+        <SigninForm onSigninValidateClick={() => this.props.onSigninValidateClick()} onAlreadyAccountClick={() => this.props.onAlreadyAccountClick} />
         <Footer />
       </div>
     );
@@ -138,12 +143,21 @@ class Main extends React.Component {
 
   handleSigninClick() {
     this.setState({
-      component: <MainSignin onSigninValidateClick={() => this.handleSigninValidateClick()} />,
+      component: <MainSignin 
+        onSigninValidateClick={() => this.handleSigninValidateClick()}
+        onAlreadyAccountClick={() => this.handleAlreadyAccountClick()} />,
       });
   }
 
   handleSigninValidateClick() {
     alert("inscription effectuée");
+  }
+
+  handleAlreadyAccountClick() {
+    this.setState({
+      component: <MainLogin 
+      onLoginClick={() => this.handleLoginClick()} onSigninClick={() => this.handleSigninClick()}  />,
+      });
   }
 
   render() {
