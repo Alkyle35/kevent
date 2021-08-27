@@ -1,17 +1,151 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+function Square(props) {
+  return (
+    <button className="square" onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
+}
+
+class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+      xIsNext: true
+    };
+  }
+  renderSquare(i) {
+    return (
+      <Square
+      value={this.state.squares[i]}
+      onClick={() => this.handleClick(i)}
+      />
+    );
+  }
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] =  this.state.xIsNext ? 'X' : 'O';
+    this.setState(
+      {
+        squares: squares,
+        xIsNext: !this.state.xIsNext
+      });
+  }
+
+  render() {
+    const status = this.state.xIsNext ? 'Next player: X': 'Next player: O';
+
+    return (
+      <div>
+        <div className="status">{status}</div>
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
+      </div>
+    );
+  }
+}
+
+class Game extends React.Component {
+  render() {
+    return (
+      <div className="game">
+        <div className="game-board">
+          <Board />
+        </div>
+        <div className="game-info">
+          <div>{/* status */}</div>
+          <ol>{/* TODO */}</ol>
+        </div>
+      </div>
+    );
+  }
+}
+
+// ========================================
+
+
+
+class BannerLogo extends React.Component {
+  render () {
+    return (
+      <div className="banner_logo">
+        <img src="" alt="banner logo" />
+      </div>
+    );
+  }
+}
+
+class Banner extends React.Component {
+  render() {
+    return (
+      <div className="banner">
+        <BannerLogo />
+      </div>
+    );
+  }
+}
+
+class LoginForm extends React.Component {
+  render () {
+    return (
+      <div className="login_form">
+        <LoginInput />
+        <LoginInput />
+        <button>Connexion</button>
+        <a href="">mot de passe oublié?</a>
+        <a href="">Inscription</a>
+      </div>
+    );
+  }
+}
+
+class LoginInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      label: props.label,
+      isPassWord: false
+    };
+  }
+
+  render() {
+    return (
+      <div className="login_input">
+        <label>{this.state.label}</label><input />
+      </div>
+    );
+  }
+}
+
+class MainLogin extends React.Component {
+  render() {
+    return (
+      <div className="main_login">
+        <Banner />
+        <LoginForm />
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <MainLogin />,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
