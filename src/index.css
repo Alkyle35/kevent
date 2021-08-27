@@ -46,6 +46,10 @@ table {
 
 /* FIN RESET */
 
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #E8E7ED;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -56,27 +60,33 @@ body {
 
 .banner {
   background-color: #444658;
-  width: 360px;
+  width: 100%;
   height: 76px;
-  display:flex;
   justify-content:center;
-  
 }
 
 .banner_logo {
   color: #FFFFFF;
   font-size: 10px;
-  
+  margin-left: 0; 
 }
 
 h1 {
   color: #fff;
-  align-items: center;
-
+  text-align: center;
+  margin-top: 19px;
 }
 
+h2 {
+  padding:15px;
+  font-size:15px;
+}
+
+
 .login_form {
-  align-items: center;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
   align-content:space-between;
   margin: 20%;
   font-size: 10px;
@@ -87,9 +97,5 @@ h1 {
 }
 
 .buttom {
-  margin: 5px 0;
-}
-
-.root {
-  margin: 20px;
+  margin: 5px;
 }
