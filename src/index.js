@@ -60,9 +60,8 @@ class LoginForm extends React.Component {
 
         <KEventButton label="Connexion" onClick={() => this.props.onLoginClick()} />
           
-        <KEventButton label="mot de passe oublié?" type="online"/>
+        <KEventButton label="mot de passe oublié?" type="online" onClick={() => this.props.onForgetPassWordClick()}/>
         
-        <div>--- ou ---</div>
         <KEventButton label="Inscription" onClick={() => this.props.onSigninClick()} />
       </div>
     );
@@ -94,7 +93,8 @@ class MainLogin extends React.Component {
         <Banner />
         <LoginForm 
         onLoginClick ={() => this.props.onLoginClick()} 
-        onSigninClick={() => this.props.onSigninClick()}/>
+        onSigninClick={() => this.props.onSigninClick()}
+        onForgetPassWordClick={() => this.props.onForgetPassWordClick()}/>
         <Footer />
       </div>
     );
@@ -129,11 +129,25 @@ class MainSignin extends React.Component {
   }
 }
 
+class MainForgetPassWord extends React.Component {
+  render() {
+    return (
+      <div>
+        <Banner />
+        <Footer />
+      </div>
+    );
+  }
+}
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      component: <MainLogin onLoginClick={() => this.handleLoginClick()} onSigninClick={() => this.handleSigninClick()} />,
+      component: <MainLogin 
+        onLoginClick={() => this.handleLoginClick()} 
+        onSigninClick={() => this.handleSigninClick()} 
+        onForgetPassWordClick={() => this.handleForgetPassWordClick()} />,
     };
   }
 
@@ -146,6 +160,12 @@ class Main extends React.Component {
       component: <MainSignin 
         onSigninValidateClick={() => this.handleSigninValidateClick()}
         onAlreadyAccountClick={() => this.handleAlreadyAccountClick()} />,
+      });
+  }
+
+  handleForgetPassWordClick() {
+    this.setState({
+      component: <MainForgetPassWord />,
       });
   }
 
