@@ -54,17 +54,14 @@ body {
   background-color: #E8E7ED;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 20px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex-wrap:wrap;
 }
 
 .banner {
   background-color: #444658;
-  width: 100%;
+  width: 100%; 
   height: 76px;
+  margin-top: 0;
+  
 }
 
 .banner_logo {
@@ -75,50 +72,54 @@ body {
 
 h1 {
   color:#FFFFFF;
-  text-align: center;
-  margin-top: 19px;
+  margin-top: 19px; 
+  display:flex;
+  justify-content: center;
 }
 
 h2 {
   font-size:14px;
-  margin-bottom: 10%;
-}
+  margin-bottom: 20px;
+  margin-top: 55px;
+  display:flex;
+  justify-content: center;
 
+}
 
 .login_form,
 .signin_form {
-  justify-content:flex-start;
-  align-content:space-between;
-  margin: 20%;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center; 
   font-size: 10px;
 }
 
-
 .kevent_button button {
-  margin: 7px;
+  margin: 7px; 
   font-size: 10px;
-  align-content:space-between;
-  align-items: stretch;
-  width: 80%;
 }
 
 .kevent_button a {
   text-decoration: none;
-  font-size: 10px;
-  align-items: stretch;
-  opacity:60%;
-  width:80%;
-}
-
-a {
   color:inherit;
+  font-size: 10px;
+  opacity:60%;
 }
 
 .footer {
   font-size: 9px;
   opacity: 60%;
-  text-align: center;
-  margin-top:auto;
+  margin-top: auto;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_input {
+  display:flex;
+  justify-content: center;
+  margin: 1%;
 }
 
 .kevent_input{
