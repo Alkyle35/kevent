@@ -25,27 +25,29 @@ export function LoginForm({onConnect, onFormTypeChanged}) {
     return (
         <>
         <BannerForm />
-        <form className="container" onSubmit={handleSubmit}>
-            <h2>Se connecter</h2>
-            {error && <Alert>{error}</Alert>}
-            <div className="form-group">
-                <label htmlfor="username">Nom d'utilisateur</label>
-                <input type="text" name="username" id="username" required/>
-            </div>
-            
-            <div className="form-group">
-                <label htmlfor="password">Mot de passe</label>
-                <input type="password" name="password" id="password" required />
-            </div>
+        <div className="container" >
+            <form onSubmit={handleSubmit}>
+                <h2>Se connecter</h2>
+                {error && <Alert>{error}</Alert>}
+                <div className="form-group">
+                    <label htmlfor="username">Nom d'utilisateur</label>
+                    <input type="text" name="username" id="username" required/>
+                </div>
+                
+                <div className="form-group">
+                    <label htmlfor="password">Mot de passe</label>
+                    <input type="password" name="password" id="password" required />
+                </div>
 
-            <button disabled={loading} type="submit" className="">Se connecter</button>
+                <button disabled={loading} type="submit" className="">Se connecter</button>
 
-            
-        </form>
+                
+            </form>
 
-        <a href="#" onClick={() => onFormTypeChanged('forget_password_form')}>Mot de passe oublié?</a>
-            
-        <button disabled={loading} className="" onClick={() => onFormTypeChanged('signin_form')}>Inscription</button>
+            <a href="#" onClick={() => onFormTypeChanged('forget_password_form')}>Mot de passe oublié?</a>
+                
+            <button disabled={loading} className="" onClick={() => onFormTypeChanged('signin_form')}>Inscription</button>
+        </div>
         <FooterForm />
         </>
     );

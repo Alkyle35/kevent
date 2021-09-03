@@ -86,8 +86,7 @@ h2 {
 
 }
 
-.login_form,
-.signin_form {
+.container {
   display:flex;
   flex-direction:column;
   align-items: center;
@@ -96,13 +95,12 @@ h2 {
 }
 
 
-
-.kevent_button button {
+button {
   margin: 7px; 
   font-size: 10px;
 }
 
-.kevent_button a {
+a {
   text-decoration: none;
   color:inherit;
   font-size: 10px;
@@ -118,7 +116,7 @@ h2 {
   align-items:center;
 }
 
-.login_input {
+input {
   display:flex;
   justify-content: center;
   margin: 1%;
