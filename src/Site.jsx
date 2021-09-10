@@ -1,10 +1,21 @@
 import React, { useState } from "react";
+import {Chat} from './Chat/Chat'
+import { Events } from "./Events/Events";
+import { Profile } from "./Profile/Profile";
 
 export function Site() {
     const [page, setPage] = useState('events')
+    let pageCode = <Events />;
+
+    if (page === "chat") {
+        pageCode = <Chat />;
+    } else if (page === "profile") {
+        pageCode = <Profile />;
+    }
+
     return <>
         <NavBar currentPage={page} onClick={setPage}/>
-        <p>{page}</p>
+        {pageCode}
         </>;
 }
 
